@@ -111,7 +111,7 @@
 
 // export default Navbar;
 // Navbar.tsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import DashboardIcon from "../icons/DashboardIcon";
 
@@ -169,6 +169,9 @@ const features: Feature[] = [
 
 const Navbar: React.FC<NavbarProps> = ({ collapse, setCollapse }) => {
   const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
+  const [email, setEmail] = useState<string>("");
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
 
   const handleSubMenuToggle = (title: string) => {
     if (openSubMenu === title) {
@@ -177,6 +180,24 @@ const Navbar: React.FC<NavbarProps> = ({ collapse, setCollapse }) => {
       setOpenSubMenu(title);
     }
   };
+  useEffect(() => {
+    const userString = localStorage.getItem("user");
+    if (userString) {
+      try {
+        const user = JSON.parse(userString);
+        if (user && user.firstName && user.lastName) {
+          setFirstName(user.firstName);
+          setLastName(user.lastName);
+        } else {
+          console.error("User email not found in the parsed data.");
+        }
+      } catch (error) {
+        console.error("Error parsing user data from localStorage:", error);
+      }
+    } else {
+      console.log("No user data found in localStorage.");
+    }
+  }, []);
 
   return (
     <aside
@@ -243,15 +264,31 @@ const Navbar: React.FC<NavbarProps> = ({ collapse, setCollapse }) => {
           ))}
         </ul>
         <div className="mt-auto w-full   items-center justify-start space-y-1 md:space-y-0 md:space-x-2 md:w-32 lg:w-48">
+          {email ? (
+            <div className="mt-2  text-gray-800 text-center  md:absolute md:left-2 md:bottom-36 flex">
+              <img
+                src="path_to_avatar_image"
+                alt="Avatar"
+                className="w-6 h-6 rounded-full mr-1 border border-white"
+              />
+              <span> {firstName}</span>
+              <span> {lastName}</span>
+            </div>
+          ) : (
+            <div className="mt-2 text-xl text-gray-800">
+              <span></span>
+            </div>
+          )}
           <Link
             to="/settings"
-            className=" items-center p-2 text-black rounded-lg dark:text-white   group relative md:absolute md:left-2 md:bottom-20 font-bold hover:text-white hover:bg-gray-100 w-[80%]"
+            className=" items-center p-2 text-black rounded-lg dark:text-white   group relative md:absolute md:left-1 md:bottom-20 font-bold hover:text-white hover:bg-gray-100 w-[80%]"
           >
             <button className=" p-2 w-full md:w-16 rounded-lg  hover:text-white">
               <VscSettingsGear size={24} className="mx-auto " color="black" />
             </button>
             {!collapse && <span className="ms-3 max-md:hidden"></span>}
           </Link>
+
           <Link
             to="/signup"
             className="flex items-center  text-black rounded-lg dark:text-black hover:text-gray-700  group relative md:absolute md:left-2 md:bottom-8 font-bold hover:bg-gray-100 w-[80%]"

@@ -151,6 +151,8 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Heading from "../Heading";
+import IMG11 from "../dashboard/IMG11.png";
+import { FaLongArrowAltRight } from "react-icons/fa";
 
 interface FormValues {
   email: string;
@@ -236,52 +238,63 @@ const SignIn: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen text-black bg-gray-100">
-      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md border border-orange-300 border-separate border-s-4">
-        <h2 className="text-3xl font-bold text-center text-gray-900">
-          {isSignedUp ? "Welcome Back!" : "Sign In"} {/* Conditional heading */}
-        </h2>
-        <form onSubmit={handleSubmit} className="flex flex-col">
-          <div className="space-y-8 px-3">
-            <Input
-              type="email"
-              label="Email"
-              id="email"
-              placeholder="Enter email"
-              value={value.email}
-              onChange={handleChange}
-              error={fieldErrors?.email}
-              className="w-full"
-            />
-            <Input
-              type="password"
-              label="Password"
-              id="password"
-              placeholder="Enter password"
-              value={value.password}
-              onChange={handleChange}
-              error={fieldErrors?.password}
-              className="w-full"
-            />
-            <Button
-              type="submit"
-              className="w-full px-3 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700"
-            >
-              Sign In
-            </Button>
-            <p className="text-center mt-4">
-              {isSignedUp ? (
-                <Link to="/dashboard" className="text-blue-600 underline">
-                  Go to Dashboard
-                </Link>
-              ) : (
-                <Link to="/signup" className="text-blue-600 underline">
-                  Don't have an account? Sign up
-                </Link>
-              )}
-            </p>
+    <div className=" min-h-screen text-black bg-gray-100 ">
+      <Heading />
+      <div className="flex justify-center align-middle mt-20 ">
+        <div className="w-[50%] h-[580px]  max-w-md p-8 space-y-8 bg-gradient-to-r from-pink-200 to-yellow-100 rounded-3xl shadow-md border bg-gradient-to-pink-100 border-orange-200 border-separate border-s-4  relative">
+          <div className=" w-full p-8 bg-white rounded-3xl shadow-2xl   absolute top-14 -inset-0 left-0 h-[520px] ">
+            <img src={IMG11} className="w-[400px] h-[150px]" />
+            <h2 className="text-3xl font-bold text-center text-gray-900 mt-10">
+              {isSignedUp ? "Welcome Back!" : "Sign In"}{" "}
+              {/* Conditional heading */}
+            </h2>
+            <form onSubmit={handleSubmit} className="flex flex-col">
+              <div className="space-y-8 px-3">
+                <Input
+                  type="email"
+                  label="Email"
+                  id="email"
+                  placeholder="Enter email"
+                  value={value.email}
+                  onChange={handleChange}
+                  error={fieldErrors?.email}
+                  className="w-full"
+                />
+                <Input
+                  type="password"
+                  label="Password"
+                  id="password"
+                  placeholder="Enter password"
+                  value={value.password}
+                  onChange={handleChange}
+                  error={fieldErrors?.password}
+                  className="w-full"
+                />
+                <Button
+                  type="submit"
+                  className="w-[30%] px-3 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700 border-gray-300 border ml-28"
+                >
+                  <FaLongArrowAltRight
+                    color="white"
+                    size={20}
+                    className="ml-6"
+                  />
+                </Button>
+                <p className="text-center mt-1">
+                  {isSignedUp ? (
+                    <Link to="/dashboard" className="text-blue-600 underline">
+                      Go to Dashboard
+                    </Link>
+                  ) : (
+                    <Link to="/signup" className="text-blue-600 underline">
+                      Don't have an account? Sign up
+                    </Link>
+                  )}
+                </p>
+              </div>
+            </form>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );

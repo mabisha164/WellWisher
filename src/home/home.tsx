@@ -358,7 +358,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { AppContext } from "../App";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import About from "./about";
-import IMG4 from "../assets/IMG4.png";
+import IMG10 from "../assets/IMG10.png";
 interface Member {
   name: string;
   email: string;
@@ -403,96 +403,90 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className=" h-screen ">
+    <div className=" h-screen w-full relative">
       <div>
-        <img
-          src={IMG4}
-          className="h-screen w-full relative"
-          style={{
-            backgroundSize: "cover",
-            backgroundPosition: "centre",
-          }}
-          alt="User Avatar"
-        />
-        <h1 className="text-3xl font-bold text-center mb-8 text-black underline italic absolute top-32 left-80 right-48">
-          Home Page
-        </h1>
+        <img src={IMG10} className=" w-full h-[200] " alt="User Avatar" />
+        <div className="bg-gray-100 w-[70%] h-full absolute  right-40 left-72 bottom-0 top-96 rounded-3xl shadow-2xl border border-orange-200">
+          <h1 className="text-3xl font-bold text-center mb-8 text-black underline italic ">
+            Events
+          </h1>
 
-        <div className="p-8 absolute top-56 left-80 right-48">
-          <h2 className="text-3xl font-bold mb-4 text-black  font-cursive">
-            Upcoming Events
-          </h2>
-          <div className="w-[70%] bg-white p-8 rounded-lg shadow-2xl">
-            {upcomingEvents.length === 0 ? (
-              <p className="text-gray-600">No upcoming events.</p>
-            ) : (
-              <ul>
-                {upcomingEvents.map((event) => (
-                  <li key={event.id} className="mb-4 text-black">
-                    <div className="flex gap-2">
-                      {new Date(event.date).toLocaleDateString("en-US", {
-                        // year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })}
-                      ,<strong>{event.title}</strong>{" "}
-                    </div>
+          <div className="p-8 ">
+            <h2 className="text-3xl font-bold mb-4 text-black  font-cursive">
+              Upcoming Events
+            </h2>
+            <div className="w-[70%] bg-white p-8 rounded-lg shadow-2xl">
+              {upcomingEvents.length === 0 ? (
+                <p className="text-gray-600">No upcoming events.</p>
+              ) : (
+                <ul>
+                  {upcomingEvents.map((event) => (
+                    <li key={event.id} className="mb-4 text-black">
+                      <div className="flex gap-2">
+                        {new Date(event.date).toLocaleDateString("en-US", {
+                          // year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })}
+                        ,<strong>{event.title}</strong>{" "}
+                      </div>
 
-                    <div className="flex justify-between">
-                      <p>{event.message}</p>
+                      <div className="flex justify-between">
+                        <p>{event.message}</p>
+                        <button
+                          className="text-red-500 italic"
+                          onClick={() => deleteEvent(event.id)}
+                        >
+                          <RiDeleteBin6Fill color="red" size={26} />
+                        </button>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+          <div className="p-8 ">
+            <h1 className="text-3xl  mb-4 text-black font-bold font-cursive">
+              Contact Info
+            </h1>
+            <div className="w-[70%] bg-white p-8 rounded-lg shadow-2xl">
+              {contacts.length === 0 ? (
+                <p className="text-gray-600">No contacts available.</p>
+              ) : (
+                <ul>
+                  {contacts.map((contact, index) => (
+                    <li
+                      key={index}
+                      className="mb-4 text-black flex justify-between"
+                    >
+                      <div className="flex gap-4 items-center">
+                        {contact.profileImageUrl && (
+                          <img
+                            src={contact.profileImageUrl}
+                            alt={contact.name}
+                            className="w-12 h-12 rounded-full"
+                          />
+                        )}
+                        <div>
+                          <p className="font-bold italic text-xl ">
+                            {contact.name}
+                          </p>
+                          <p className="mt-2 ">{contact.email}</p>
+                          <p>{contact.phoneNumber}</p>
+                        </div>
+                      </div>
                       <button
                         className="text-red-500 italic"
-                        onClick={() => deleteEvent(event.id)}
+                        onClick={() => deleteContact(index)}
                       >
                         <RiDeleteBin6Fill color="red" size={26} />
                       </button>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </div>
-        <div className="p-8 absolute bottom-14 left-80 right-48">
-          <h1 className="text-3xl  mb-4 text-black font-bold font-cursive">
-            Contact Info
-          </h1>
-          <div className="w-[70%] bg-white p-8 rounded-lg shadow-2xl">
-            {contacts.length === 0 ? (
-              <p className="text-gray-600">No contacts available.</p>
-            ) : (
-              <ul>
-                {contacts.map((contact, index) => (
-                  <li
-                    key={index}
-                    className="mb-4 text-black flex justify-between"
-                  >
-                    <div className="flex gap-4 items-center">
-                      {contact.profileImageUrl && (
-                        <img
-                          src={contact.profileImageUrl}
-                          alt={contact.name}
-                          className="w-12 h-12 rounded-full"
-                        />
-                      )}
-                      <div>
-                        <p className="font-bold italic text-xl ">
-                          {contact.name}
-                        </p>
-                        <p className="mt-2 ">{contact.email}</p>
-                        <p>{contact.phoneNumber}</p>
-                      </div>
-                    </div>
-                    <button
-                      className="text-red-500 italic"
-                      onClick={() => deleteContact(index)}
-                    >
-                      <RiDeleteBin6Fill color="red" size={26} />
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            )}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </div>
         </div>
         {/* <div className="w-full">

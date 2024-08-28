@@ -43,26 +43,7 @@ import img2 from "../assets/IMG3.png";
 import { IoMdAdd } from "react-icons/io";
 
 const Heading = () => {
-  const [email, setEmail] = useState<string>("");
-
-  useEffect(() => {
-    // Retrieve the user from localStorage
-    const userString = localStorage.getItem("user");
-    if (userString) {
-      try {
-        const user = JSON.parse(userString);
-        if (user && user.email) {
-          setEmail(user.email);
-        } else {
-          console.error("User email not found in the parsed data.");
-        }
-      } catch (error) {
-        console.error("Error parsing user data from localStorage:", error);
-      }
-    } else {
-      console.log("No user data found in localStorage.");
-    }
-  }, []);
+  // const [firstName, setFirstName] = useState<string>("");
 
   return (
     <div className="p-2 bg-gradient-to-r from-green-200 to-pink-300 text-black italic rounded-2xl  border-b-4 border-b-white flex gap-1 w-full items-center">
@@ -80,15 +61,6 @@ const Heading = () => {
             <span className="text-gray-600">WISHER</span>
           </div>
         </Link>
-        {email ? (
-          <div className="mt-2 text-xl text-gray-800 text-center">
-            <span> {email}!</span>
-          </div>
-        ) : (
-          <div className="mt-2 text-xl text-gray-800">
-            <span></span>
-          </div>
-        )}
       </div>
       <div className="bg-gray-100 border border-yellow-300 p-1 w-28 absolute right-16 top-5  rounded-2xl shadow-xl">
         <Link to={"/event"}>

@@ -116,17 +116,17 @@ const SignUp: React.FC = () => {
   };
 
   return (
-    <div className=" min-h-screen  bg-yellow-50">
+    <div className=" min-h-screen  bg-gray-100">
       {/* <img
         src={IMG6}
         alt="User Avatar"
         className="w-full h-screen opacity-40 relative"
       /> */}
       <Heading />
-      <div className="flex justify-center align-middle mt-20">
-        <div className="w-full max-w-md  space-y-8  rounded-xl shadow-2xl border border-yellow-400 border-separate border-s-4 bg-orange-50 bg-opacity-80 ">
+      <div className="flex justify-center align-middle mt-20 bg-blue-50">
+        <div className="w-full max-w-md  space-y-8  rounded-xl shadow-2xl border border-yellow-400 border-separate border-s-4 bg-white bg-opacity-80 ">
           {!showOtpInput ? (
-            <div className="bg-white-opacity-10 shadow-2xl p-3 rounded-ee-3xl rounded-se-3xl">
+            <div className="bg-white shadow-2xl p-3 rounded-ee-3xl rounded-se-3xl">
               <div className="  ml-28">
                 {" "}
                 <img
@@ -193,7 +193,7 @@ const SignUp: React.FC = () => {
 
                     <p className=" p-4 flex justify-end ">
                       If you have an account,
-                      <Link to="/signin" className="text-blue-600 underline">
+                      <Link to="/signIn" className="text-blue-600 underline">
                         Sign in
                       </Link>
                     </p>
@@ -202,18 +202,18 @@ const SignUp: React.FC = () => {
               </form>
             </div>
           ) : (
-            <div className=" ">
+            <div className="h-[180px] ">
               <form
                 onSubmit={handleOtpSubmit}
                 className="flex flex-col space-y-6  rounded-lg shadow-2xl "
               >
-                <div className="space-y-4">
-                  <h3 className="text-xl font-bold text-center text-gray-900 mt-2 ">
+                <div className="space-y-4 h-[180px]">
+                  <h3 className="text-xl font-bold text-center text-gray-900 mt-4 ">
                     Enter OTP
                   </h3>
                   <Input
                     type="text"
-                    label="OTP"
+                    label="    OTP"
                     id="otp"
                     placeholder="Enter OTP"
                     value={otp}
@@ -222,7 +222,7 @@ const SignUp: React.FC = () => {
                   />
                   <Button
                     type="submit" // Ensure this matches the prop definition in Button component
-                    className="px-2 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700 mb--6 ml-2 "
+                    className="px-2 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700  ml-6 mt-16 "
                   >
                     Submit OTP
                   </Button>
