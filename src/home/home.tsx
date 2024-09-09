@@ -403,17 +403,16 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className=" h-screen w-full relative">
-      <div>
-        <img src={IMG10} className=" w-full h-[200] " alt="User Avatar" />
-        <div className="bg-gray-100 w-[70%] h-full absolute  right-40 left-72 bottom-0 top-96 rounded-3xl shadow-2xl border border-orange-200">
-          <h1 className="text-3xl font-bold text-center mb-8 text-black underline italic ">
+    <div className=" h-screen w-full ">
+      <div className="p-36">
+        <div className="bg-gray-100 w-[70%] h-full  rounded-3xl shadow-2xl border border-orange-200">
+          <h1 className="text-3xl font-semibold text-center mb-8 text-black underline italic mt-4">
             Events
           </h1>
 
           <div className="p-8 ">
             <h2 className="text-3xl font-bold mb-4 text-black  font-cursive">
-              Upcoming Events
+              Upcoming Events :
             </h2>
             <div className="w-[70%] bg-white p-8 rounded-lg shadow-2xl">
               {upcomingEvents.length === 0 ? (
@@ -448,7 +447,7 @@ const Home: React.FC = () => {
           </div>
           <div className="p-8 ">
             <h1 className="text-3xl  mb-4 text-black font-bold font-cursive">
-              Contact Info
+              Contact Info :
             </h1>
             <div className="w-[70%] bg-white p-8 rounded-lg shadow-2xl">
               {contacts.length === 0 ? (

@@ -202,7 +202,7 @@ function Dashboard() {
 
   return (
     <div className="text-black h-screen p-4 flex flex-col items-center bg-orange-50">
-      <h1 className="text-2xl font-bold mb-4 text-gray-800">Calendar</h1>
+      {/* <h1 className="text-2xl font-bold mb-4 text-gray-800">Calendar</h1> */}
       <div className="w-full max-w-6xl">
         <Link to={"/event"}>
           <Calendar
