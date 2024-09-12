@@ -46,7 +46,7 @@ const Heading = () => {
   // const [firstName, setFirstName] = useState<string>("");
 
   return (
-    <div className="p-2 bg-gradient-to-r from-green-200 to-pink-300 text-black italic rounded-2xl  border-b-4 border-b-white flex gap-1 w-full items-center">
+    <div className="p-2 bg-gradient-to-r from-white to-fuchsia-900 text-black italic rounded-2xl  border-b-4 border-b-white flex gap-1 w-full items-center">
       <div>
         <img
           src={img2}

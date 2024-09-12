@@ -354,16 +354,163 @@
 
 // export default Home;
 
+// import React, { useContext, useState, useEffect } from "react";
+// import { AppContext } from "../App";
+// import { RiDeleteBin6Fill } from "react-icons/ri";
+// import About from "./about";
+// import IMG10 from "../assets/IMG10.png";
+// interface Member {
+//   name: string;
+//   email: string;
+//   profileImageUrl?: string;
+// }
+// interface FormData {
+//   name: string;
+//   email: string;
+//   phoneNumber: string;
+//   groupName: string;
+//   profileImageUrl?: string;
+//   groupProfileImageUrl?: string;
+//   members: Member[];
+// }
+// const Home: React.FC = () => {
+//   const appContext = useContext(AppContext);
+//   const [contacts, setContacts] = useState<FormData[]>([]);
+//   useEffect(() => {
+//     const savedContacts = localStorage.getItem("contacts");
+//     if (savedContacts) {
+//       setContacts(JSON.parse(savedContacts));
+//     }
+//   }, []);
+//   const deleteContact = (index: number) => {
+//     const updatedContacts = contacts.filter((_, i) => i !== index);
+//     setContacts(updatedContacts);
+//     localStorage.setItem("contacts", JSON.stringify(updatedContacts));
+//   };
+
+//   if (!appContext) {
+//     return <div>Error: App context is undefined.</div>;
+//   }
+
+//   const { upcomingEvents, setUpcomingEvents } = appContext;
+
+//   const deleteEvent = (id: number) => {
+//     const updatedEvents = upcomingEvents.filter((event) => event.id !== id);
+
+//     setUpcomingEvents(updatedEvents);
+
+//     localStorage.setItem("upcomingEvents", JSON.stringify(updatedEvents));
+//   };
+
+//   return (
+//     <div className=" h-screen w-full ">
+//       <div className="p-36">
+//         <div className="bg-gray-100 w-[70%] h-full  rounded-3xl shadow-2xl border border-orange-200">
+//           <h1 className="text-3xl font-semibold text-center mb-8 text-black underline italic mt-4">
+//             Events
+//           </h1>
+
+//           <div className="p-8 ">
+//             <h2 className="text-3xl font-bold mb-4 text-black  font-cursive">
+//               Upcoming Events :
+//             </h2>
+//             <div className="w-[70%] bg-white p-8 rounded-lg shadow-2xl">
+//               {upcomingEvents.length === 0 ? (
+//                 <p className="text-gray-600">No upcoming events.</p>
+//               ) : (
+//                 <ul>
+//                   {upcomingEvents.map((event) => (
+//                     <li key={event.id} className="mb-4 text-black">
+//                       <div className="flex gap-2">
+//                         {new Date(event.date).toLocaleDateString("en-US", {
+//                           // year: "numeric",
+//                           month: "long",
+//                           day: "numeric",
+//                         })}
+//                         ,<strong>{event.title}</strong>{" "}
+//                       </div>
+
+//                       <div className="flex justify-between">
+//                         <p>{event.message}</p>
+//                         <button
+//                           className="text-red-500 italic"
+//                           onClick={() => deleteEvent(event.id)}
+//                         >
+//                           <RiDeleteBin6Fill color="red" size={26} />
+//                         </button>
+//                       </div>
+//                     </li>
+//                   ))}
+//                 </ul>
+//               )}
+//             </div>
+//           </div>
+//           <div className="p-8 ">
+//             <h1 className="text-3xl  mb-4 text-black font-bold font-cursive">
+//               Contact Info :
+//             </h1>
+//             <div className="w-[70%] bg-white p-8 rounded-lg shadow-2xl">
+//               {contacts.length === 0 ? (
+//                 <p className="text-gray-600">No contacts available.</p>
+//               ) : (
+//                 <ul>
+//                   {contacts.map((contact, index) => (
+//                     <li
+//                       key={index}
+//                       className="mb-4 text-black flex justify-between"
+//                     >
+//                       <div className="flex gap-4 items-center">
+//                         {contact.profileImageUrl && (
+//                           <img
+//                             src={contact.profileImageUrl}
+//                             alt={contact.name}
+//                             className="w-12 h-12 rounded-full"
+//                           />
+//                         )}
+//                         <div>
+//                           <p className="font-bold italic text-xl ">
+//                             {contact.name}
+//                           </p>
+//                           <p className="mt-2 ">{contact.email}</p>
+//                           <p>{contact.phoneNumber}</p>
+//                         </div>
+//                       </div>
+//                       <button
+//                         className="text-red-500 italic"
+//                         onClick={() => deleteContact(index)}
+//                       >
+//                         <RiDeleteBin6Fill color="red" size={26} />
+//                       </button>
+//                     </li>
+//                   ))}
+//                 </ul>
+//               )}
+//             </div>
+//           </div>
+//         </div>
+//         {/* <div className="w-full">
+//         <About />
+//       </div> */}
+//       </div>
+//       <div />
+//     </div>
+//   );
+// };
+
+// export default Home;
+
 import React, { useContext, useState, useEffect } from "react";
 import { AppContext } from "../App";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import About from "./about";
 import IMG10 from "../assets/IMG10.png";
+
 interface Member {
   name: string;
   email: string;
   profileImageUrl?: string;
 }
+
 interface FormData {
   name: string;
   email: string;
@@ -373,15 +520,18 @@ interface FormData {
   groupProfileImageUrl?: string;
   members: Member[];
 }
+
 const Home: React.FC = () => {
   const appContext = useContext(AppContext);
   const [contacts, setContacts] = useState<FormData[]>([]);
+
   useEffect(() => {
     const savedContacts = localStorage.getItem("contacts");
     if (savedContacts) {
       setContacts(JSON.parse(savedContacts));
     }
   }, []);
+
   const deleteContact = (index: number) => {
     const updatedContacts = contacts.filter((_, i) => i !== index);
     setContacts(updatedContacts);
@@ -396,103 +546,96 @@ const Home: React.FC = () => {
 
   const deleteEvent = (id: number) => {
     const updatedEvents = upcomingEvents.filter((event) => event.id !== id);
-
     setUpcomingEvents(updatedEvents);
-
     localStorage.setItem("upcomingEvents", JSON.stringify(updatedEvents));
   };
 
   return (
-    <div className=" h-screen w-full ">
-      <div className="p-36">
-        <div className="bg-gray-100 w-[70%] h-full  rounded-3xl shadow-2xl border border-orange-200">
-          <h1 className="text-3xl font-semibold text-center mb-8 text-black underline italic mt-4">
-            Events
-          </h1>
+    <div className="h-screen w-full flex  bg-gray-100">
+      <div className="max-w-4xl w-[50%] mx-4 mt-8  ml-64">
+        <h1 className="text-3xl font-semibold text-center mb-8 text-black underline italic ">
+          Events
+        </h1>
 
-          <div className="p-8 ">
-            <h2 className="text-3xl font-bold mb-4 text-black  font-cursive">
-              Upcoming Events :
-            </h2>
-            <div className="w-[70%] bg-white p-8 rounded-lg shadow-2xl">
-              {upcomingEvents.length === 0 ? (
-                <p className="text-gray-600">No upcoming events.</p>
-              ) : (
-                <ul>
-                  {upcomingEvents.map((event) => (
-                    <li key={event.id} className="mb-4 text-black">
-                      <div className="flex gap-2">
-                        {new Date(event.date).toLocaleDateString("en-US", {
-                          // year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                        })}
-                        ,<strong>{event.title}</strong>{" "}
-                      </div>
+        <div className="mb-8 ">
+          <h2 className="text-3xl font-bold mb-4 text-black font-cursive ">
+            Upcoming Events:
+          </h2>
+          <div className="bg-white rounded-lg shadow-2xl flex justify-between">
+            {upcomingEvents.length === 0 ? (
+              <p className="p-4 text-gray-600">No upcoming events.</p>
+            ) : (
+              <ul>
+                {upcomingEvents.map((event) => (
+                  <li key={event.id} className="mb-4 text-black">
+                    <div className="flex gap-2">
+                      {new Date(event.date).toLocaleDateString("en-US", {
+                        // year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                      ,
+                      <strong className="font-bold italic text-xl">
+                        {event.title}
+                      </strong>{" "}
+                    </div>
 
-                      <div className="flex justify-between">
-                        <p>{event.message}</p>
-                        <button
-                          className="text-red-500 italic"
-                          onClick={() => deleteEvent(event.id)}
-                        >
-                          <RiDeleteBin6Fill color="red" size={26} />
-                        </button>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          </div>
-          <div className="p-8 ">
-            <h1 className="text-3xl  mb-4 text-black font-bold font-cursive">
-              Contact Info :
-            </h1>
-            <div className="w-[70%] bg-white p-8 rounded-lg shadow-2xl">
-              {contacts.length === 0 ? (
-                <p className="text-gray-600">No contacts available.</p>
-              ) : (
-                <ul>
-                  {contacts.map((contact, index) => (
-                    <li
-                      key={index}
-                      className="mb-4 text-black flex justify-between"
-                    >
-                      <div className="flex gap-4 items-center">
-                        {contact.profileImageUrl && (
-                          <img
-                            src={contact.profileImageUrl}
-                            alt={contact.name}
-                            className="w-12 h-12 rounded-full"
-                          />
-                        )}
-                        <div>
-                          <p className="font-bold italic text-xl ">
-                            {contact.name}
-                          </p>
-                          <p className="mt-2 ">{contact.email}</p>
-                          <p>{contact.phoneNumber}</p>
-                        </div>
-                      </div>
+                    <div className="flex gap-10">
+                      <p>{event.message}</p>
                       <button
                         className="text-red-500 italic"
-                        onClick={() => deleteContact(index)}
+                        onClick={() => deleteEvent(event.id)}
                       >
                         <RiDeleteBin6Fill color="red" size={26} />
                       </button>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
-        {/* <div className="w-full">
-        <About />
-      </div> */}
+
+        <div className="mt-8">
+          <h1 className="text-3xl mb-2 text-black font-bold font-cursive ">
+            Contact Info:
+          </h1>
+          <div className="bg-white rounded-lg shadow-2xl text-black">
+            {contacts.length === 0 ? (
+              <p className="p-4 text-gray-600">No contacts available.</p>
+            ) : (
+              <ul>
+                {contacts.map((contact, index) => (
+                  <li key={index} className="p-4 border-b flex justify-between">
+                    <div className="flex gap-4 items-center">
+                      {contact.profileImageUrl && (
+                        <img
+                          src={contact.profileImageUrl}
+                          alt={contact.name}
+                          className="w-12 h-12 rounded-full"
+                        />
+                      )}
+                      <div>
+                        <p className="font-bold italic text-xl">
+                          {contact.name}
+                        </p>
+                        <p className="mt-2">{contact.email}</p>
+                        <p>{contact.phoneNumber}</p>
+                      </div>
+                    </div>
+                    <button
+                      className="text-red-500"
+                      onClick={() => deleteContact(index)}
+                    >
+                      <RiDeleteBin6Fill color="red" size={26} />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
       </div>
-      <div />
     </div>
   );
 };
