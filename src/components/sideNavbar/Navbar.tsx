@@ -267,7 +267,7 @@ const Navbar: React.FC<NavbarProps> = ({ collapse, setCollapse }) => {
           {email ? (
             <div className="mt-2  text-gray-800 text-center  md:absolute md:left-2 md:bottom-36 flex">
               <img
-                src="path_to_avatar_image"
+                src=""
                 alt="Avatar"
                 className="w-6 h-6 rounded-full mr-1 border border-white"
               />

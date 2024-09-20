@@ -153,6 +153,7 @@ import axios from "axios";
 import Heading from "../Heading";
 import IMG11 from "../dashboard/IMG11.png";
 import { FaLongArrowAltRight } from "react-icons/fa";
+import IMG7 from "./IMG7.png";
 
 interface FormValues {
   email: string;
@@ -240,9 +241,9 @@ const SignIn: React.FC = () => {
   return (
     <div className=" min-h-screen text-black bg-gray-100 ">
       <Heading />
-      <div className="flex justify-center align-middle mt-20 ">
-        <div className="w-[50%] h-[580px]  max-w-md p-8 space-y-8 bg-gradient-to-r from-pink-200 to-yellow-100 rounded-3xl shadow-md border bg-gradient-to-pink-100 border-orange-200 border-separate border-s-4  relative">
-          <div className=" w-full p-8 bg-white rounded-3xl shadow-2xl   absolute top-14 -inset-0 left-0 h-[520px] ">
+      <div className="flex justify-center align-middle mt-8 ">
+        <div className="w-[50%] h-[590px]  max-w-md p-8 space-y-8 bg-gradient-to-r from-pink-200 to-yellow-100 rounded-3xl shadow-md border bg-gradient-to-pink-100 border-orange-200 border-separate border-s-4  relative">
+          <div className=" w-full p-8 bg-white rounded-3xl shadow-2xl   absolute top-14 -inset-0 left-0 h-[540px] ">
             <img src={IMG11} className="w-[400px] h-[150px]" />
             <h2 className="text-3xl font-bold text-center text-gray-900 mt-10">
               {isSignedUp ? "Welcome Back!" : "Sign In"}{" "}

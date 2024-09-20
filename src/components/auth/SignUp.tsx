@@ -7,8 +7,6 @@ import { axiosInstance } from "../../common/axios";
 import error from "./error";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import IMG2 from "../auth/IMG2.png";
-import IMG6 from "../auth/IMG6.png";
 import Heading from "../Heading";
 interface FormValues {
   username: string;
@@ -116,33 +114,30 @@ const SignUp: React.FC = () => {
   };
 
   return (
-    <div className=" min-h-screen  bg-gray-100">
-      {/* <img
-        src={IMG6}
-        alt="User Avatar"
-        className="w-full h-screen opacity-40 relative"
-      /> */}
+    <div className=" min-h-screen  bg-gray-100  text-black ">
       <Heading />
-      <div className="flex justify-center align-middle mt-20 bg-blue-50">
-        <div className="w-full max-w-md  space-y-8  rounded-xl shadow-2xl border border-yellow-400 border-separate border-s-4 bg-white bg-opacity-80 ">
+      <div className="flex justify-center align-middle mt-4">
+        <div className="w-[30%] h-[660px]  max-w-md p-8 space-y-8 bg-gradient-to-r from-pink-200 to-yellow-100 rounded-3xl shadow-md border bg-gradient-to-pink-100 border-orange-200 border-separate border-s-4  relative ">
           {!showOtpInput ? (
-            <div className="bg-white shadow-2xl p-3 rounded-ee-3xl rounded-se-3xl">
-              <div className="  ml-28">
+            <div className="w-full p-8 bg-white rounded-3xl shadow-2xl   absolute top-14 -inset-0 left-0 h-[600px] ">
+              <div className="     absolute  -inset-0 left-0  ml-16 ">
                 {" "}
                 <img
-                  src={IMG2}
-                  className="h-[150px] w-[150px] rounded-full shadow-2xl  border-2 border-orange-300  border-spacing-2 border-s-8 "
+                  src={
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOqSBP7m8j966uS133NvqR6HY-kLETeqzQVFk2EPBgZZs4l16Z"
+                  }
+                  className="w-[300px] h-[150px]  "
                   alt="User Avatar"
                 />
               </div>
-              {/* <h2 className="text-3xl font-bold text-center text-gray-900 p-6 mt-8">
-              Sign Up
-            </h2> */}
+              <h2 className="text-3xl font-bold text-center text-gray-900 p-6 mt-28">
+                Sign Up
+              </h2>
               <form
                 onSubmit={handleSubmit}
-                className="flex flex-col space-y-6 "
+                className="flex flex-col absolute bottom-0 ml-2 "
               >
-                <div className="space-y-4">
+                <div className="space-y-6  ">
                   <Input
                     type="text"
                     label="   Name"
@@ -183,10 +178,10 @@ const SignUp: React.FC = () => {
                     error={fieldErrors?.passwordConfirm}
                     className="w-full"
                   />
-                  <div className="py-4">
+                  <div className="py-2">
                     <Button
                       type="submit"
-                      className="w-full text-white  bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700"
+                      className="w-[40%] text-white  bg-blue-600 rounded-md hover:text-black hover:border hover:border-black  hover:bg-white focus:outline-none focus:bg-blue-700 ml-28 shadow-3xl "
                     >
                       Sign Up
                     </Button>
